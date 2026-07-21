@@ -1,0 +1,84 @@
+{
+  "confianza_global": "media",
+  "economico": {
+    "_nota": "pipeline mas barato del empate de la final (mrr=0.588 vs campeon 0.601, no concluyente)",
+    "embedding": {
+      "config": {
+        "cost_per_1k_tokens": 0.02,
+        "model": "sintetico-pago",
+        "provider": "openai"
+      },
+      "dentro_de": "empate_final",
+      "en_disputa": false,
+      "etiqueta": "emb-pago"
+    },
+    "retriever": {
+      "config": {
+        "k": 10,
+        "nombre": "bm25",
+        "params": {}
+      },
+      "dentro_de": "empate_final",
+      "en_disputa": false,
+      "etiqueta": "bm25_k10"
+    },
+    "splitter": {
+      "config": {
+        "chunk_overlap": 50,
+        "chunk_size": 500,
+        "splitter": "token"
+      },
+      "dentro_de": "empate_final",
+      "en_disputa": false,
+      "etiqueta": "token_500"
+    }
+  },
+  "fase_b": {
+    "campeon": "token_500|emb-pago|ensemble_k10_w0.7",
+    "clones_del_lider": [],
+    "comparacion": {
+      "concluyente": true,
+      "rival": "token_250|emb-pago|ensemble_k10_w0.7"
+    },
+    "empate_final": [
+      "token_500|emb-pago|ensemble_k10_w0.7",
+      "token_500|emb-pago|bm25_k10"
+    ],
+    "ic": {
+      "ic_alto": 0.689,
+      "ic_bajo": 0.512
+    },
+    "mrr": 0.601,
+    "n_pipelines": 4
+  },
+  "justificacion": "NARRACION-GOLDEN. [FASE B] La final factorial (4 pipelines sobre el examen comun) corono a token_500|emb-pago|ensemble_k10_w0.7 (mrr=0.601, IC=[0.512, 0.689], concluyente frente a token_250|emb-pago|ensemble_k10_w0.7); esta coronacion sustituye a los lideres provisionales del parrafo anterior.",
+  "n_decisiones_registradas": 1,
+  "predicciones": [
+    {
+      "acierto": true,
+      "banco": "splitter",
+      "esperado": "token_500",
+      "real": "token_500"
+    }
+  ],
+  "recomendado": {
+    "embedding": {
+      "en_disputa": false,
+      "etiqueta": "emb-pago",
+      "resuelto": true,
+      "via": "fase_a"
+    },
+    "retriever": {
+      "en_disputa": false,
+      "etiqueta": "ensemble_k10_w0.7",
+      "resuelto": true,
+      "via": "fase_b"
+    },
+    "splitter": {
+      "en_disputa": false,
+      "etiqueta": "token_500",
+      "resuelto": true,
+      "via": "fase_b"
+    }
+  }
+}

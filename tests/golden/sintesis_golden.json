@@ -1,0 +1,150 @@
+{
+  "alertas": [
+    "ALERTA-GOLDEN"
+  ],
+  "certezas": {
+    "embedding": {
+      "acuerdo": 1.0,
+      "concluyente": true,
+      "ganador": "granite-311m-r2",
+      "ic_primaria": {
+        "amplitud": 0.071,
+        "ic_alto": 0.242,
+        "ic_bajo": 0.171
+      },
+      "motivo": null,
+      "n_finalistas": null,
+      "resuelto": true
+    },
+    "retriever": {
+      "acuerdo": 0.5,
+      "concluyente": false,
+      "ganador": "ensemble_k10_w0.7",
+      "ic_primaria": {
+        "amplitud": 0.11,
+        "ic_alto": 0.512,
+        "ic_bajo": 0.402
+      },
+      "motivo": "margen_no_concluyente",
+      "n_finalistas": null,
+      "resuelto": false
+    },
+    "splitter": {
+      "acuerdo": 0.5,
+      "concluyente": true,
+      "ganador": "token_250",
+      "ic_primaria": {
+        "amplitud": 0.071,
+        "ic_alto": 0.652,
+        "ic_bajo": 0.581
+      },
+      "motivo": "desacuerdo_entre_runs",
+      "n_finalistas": null,
+      "resuelto": false
+    }
+  },
+  "confianza_global": "media",
+  "decision_tiene_stack": true,
+  "justificacion": "NARRACION-GOLDEN (fija, sin LLM).",
+  "n_decisiones_registradas": 1,
+  "pendiente_fase_b": {
+    "retriever": [
+      "ensemble_k10_w0.7",
+      "bm25_k10"
+    ],
+    "splitter": [
+      "token_250",
+      "token_500"
+    ]
+  },
+  "predicciones": [
+    {
+      "acierto": true,
+      "banco": "embedding",
+      "esperado": "granite-311m-r2",
+      "real": "granite-311m-r2"
+    },
+    {
+      "acierto": null,
+      "banco": "splitter",
+      "esperado": "token_500",
+      "real": null
+    }
+  ],
+  "stack_economico": {
+    "embedding": {
+      "config": {
+        "model": "ibm-granite/granite-embedding-311m-multilingual-r2",
+        "provider": "huggingface"
+      },
+      "coste": 0.0,
+      "en_disputa": false,
+      "etiqueta": "granite-311m-r2"
+    },
+    "retriever": {
+      "config": {
+        "k": 10,
+        "nombre": "ensemble",
+        "params": {
+          "w_bm25": 0.7
+        }
+      },
+      "coste": 0.0,
+      "en_disputa": true,
+      "etiqueta": "ensemble_k10_w0.7"
+    },
+    "splitter": {
+      "config": {
+        "chunk_overlap": 25,
+        "chunk_size": 250,
+        "splitter": "token"
+      },
+      "coste": 0.0,
+      "en_disputa": true,
+      "etiqueta": "token_250"
+    }
+  },
+  "stack_recomendado": {
+    "embedding": {
+      "config": {
+        "model": "ibm-granite/granite-embedding-311m-multilingual-r2",
+        "provider": "huggingface"
+      },
+      "en_disputa": false,
+      "etiqueta": "granite-311m-r2",
+      "resuelto": true
+    },
+    "reranker": {
+      "config": {
+        "etiqueta": "ce-minilm-l6",
+        "modelo": "ms-marco-MiniLM-L-6-v2"
+      },
+      "en_disputa": false,
+      "etiqueta": "ce-minilm-l6",
+      "resuelto": true,
+      "via": "fijado_por_usuario"
+    },
+    "retriever": {
+      "config": {
+        "k": 10,
+        "nombre": "ensemble",
+        "params": {
+          "w_bm25": 0.7
+        }
+      },
+      "en_disputa": true,
+      "etiqueta": "ensemble_k10_w0.7",
+      "resuelto": false
+    },
+    "splitter": {
+      "config": {
+        "chunk_overlap": 25,
+        "chunk_size": 250,
+        "splitter": "token"
+      },
+      "en_disputa": true,
+      "etiqueta": "token_250",
+      "resuelto": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# secretos: NUNCA subir claves (usar .env.example como referencia)
+.env
+
+# datos y artefactos locales (no son codigo)
+rag_memory/
+pdfs/
+*.pdf
+.langgraph_api/
+
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+
+# sistema
+.DS_Store

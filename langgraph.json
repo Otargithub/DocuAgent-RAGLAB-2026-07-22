@@ -1,0 +1,10 @@
+{
+  "dependencies": [
+    "."
+  ],
+  "graphs": {
+    "docuagent": "./studio/graphs.py:docuagent",
+    "docuagent_investigador": "./studio/graphs.py:docuagent_investigador"
+  },
+  "env": ".env"
+}

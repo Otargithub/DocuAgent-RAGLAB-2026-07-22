@@ -1,0 +1,31 @@
+# --- Núcleo (imprescindible) ---
+numpy
+scikit-learn
+python-dotenv
+pydantic>=2
+
+# Orquestación y LLMs
+langgraph
+langchain-core
+langchain-community
+langchain-openai          # ChatOpenAI (clasificador) + OpenAIEmbeddings
+langchain-anthropic       # ChatAnthropic (juez / supervisores)
+langchain-text-splitters
+
+# Recuperación e índices
+faiss-cpu                 # en GPU: faiss-gpu
+rank-bm25                 # backend de BM25Retriever
+pypdf                     # backend de PyPDFLoader
+
+# Embeddings y rerankers locales (coste cero de API)
+langchain-huggingface
+sentence-transformers     # CrossEncoder (rerankers) + backend HF
+
+# --- Opcionales ---
+umap-learn                # proyección UMAP; si falta, el análisis cae a PCA
+torch                     # acelera modelos locales (cuda/mps); si falta, usa CPU
+voyageai                  # rerank/embeddings Voyage
+langchain-voyageai
+langchain-experimental       # SemanticChunker (banco de splitters)
+grandalf                     # dibujo ASCII de grafos (draw_ascii en los notebooks)
+# cohere                  # rerank Cohere (solo si se usa)
