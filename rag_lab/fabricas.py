@@ -32,12 +32,12 @@ def _dispositivo_hf() -> str:
 
 def construir_llm_juez(temperatura: float = 0.0) -> ChatAnthropic:
     """El LLM que razona sobre resultados (supervisores y meta-supervisor)."""
-    return ChatAnthropic(model=CONFIG.modelo_juez, temperature=temperatura)
+    return ChatAnthropic(max_retries=6, model=CONFIG.modelo_juez, temperature=temperatura)
 
 
 def construir_llm_clasificador(temperatura: float = 0.0) -> ChatOpenAI:
     """El LLM barato que clasifica el documento y genera preguntas de test."""
-    return ChatOpenAI(model=CONFIG.modelo_clasificador, temperature=temperatura)
+    return ChatOpenAI(max_retries=6, model=CONFIG.modelo_clasificador, temperature=temperatura)
 
 
 _EMBEDDINGS_HF_CACHE: dict = {}
